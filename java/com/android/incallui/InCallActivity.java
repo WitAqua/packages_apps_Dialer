@@ -23,9 +23,11 @@ import android.app.ActivityManager.TaskDescription;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.KeyguardManager;
+import android.app.WallpaperManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
 import android.os.Bundle;
@@ -43,6 +45,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.ColorInt;
@@ -481,6 +484,27 @@ public class InCallActivity extends TransactionSafeFragmentActivity
     PseudoScreenState pseudoScreenState = InCallPresenter.getInstance().getPseudoScreenState();
     pseudoScreenState.addListener(this);
     onPseudoScreenStateChanged(pseudoScreenState.isOn());
+
+    // Set Background from WallpaperManager
+    ImageView bgView = findViewById(R.id.wallpaper_bg);
+    try {
+      WindowManager windowManager = getSystemService(WindowManager.class);
+      if (windowManager != null && windowManager.isCrossWindowBlurEnabled()){
+        WallpaperManager wm = WallpaperManager.getInstance(this);
+        Drawable wallpaper = wm.getDrawable();
+        bgView.setImageDrawable(wallpaper);
+        bgView.setRenderEffect(
+            android.graphics.RenderEffect.createBlurEffect(40f, 40f, android.graphics.Shader.TileMode.CLAMP)
+        );
+        bgView.setImageAlpha(180);
+        bgView.setVisibility(View.VISIBLE);
+      } else {
+          bgView.setVisibility(View.INVISIBLE);
+      }
+    } catch (SecurityException e) {
+      bgView.setVisibility(View.INVISIBLE);
+    }
+    
     Trace.endSection();
   }
 

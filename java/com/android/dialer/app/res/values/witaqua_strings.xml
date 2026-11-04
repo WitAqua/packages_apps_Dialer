@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) WitAqua
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+
+    <!-- International Calls -->
+    <string name="international_calls_setting_title">International Calls</string>
+    <string name="deny_incoming_international_calls_title">Deny Incoming International Calls</string>
+    <string name="deny_outgoing_international_calls_title">Deny Outgoing International Calls</string>
+</resources>

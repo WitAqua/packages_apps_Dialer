@@ -187,6 +187,12 @@ public class DialerSettingsActivity extends BaseActivity implements
         getPreferenceScreen().addPreference(blockedCalls);
       }
 
+      Preference internationalCalls = new Preference(getContext());
+      internationalCalls.setTitle(R.string.international_calls_setting_title);
+      internationalCalls.setFragment(InternationalCallsSettingsFragment.class.getName());
+      internationalCalls.setIconSpaceReserved(false);
+      getPreferenceScreen().addPreference(internationalCalls);
+
       addVoicemailSettings(isPrimaryUser);
 
       if (isPrimaryUser

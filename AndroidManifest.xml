@@ -764,6 +764,22 @@
         <activity
             android:name="com.android.voicemail.impl.configui.VoicemailSecretCodeActivity"
             android:exported="false" />
+        <service
+            android:name="com.android.dialer.blocking.InternationalCallScreeningService"
+            android:exported="true"
+            android:permission="android.permission.BIND_SCREENING_SERVICE">
+            <intent-filter>
+                <action android:name="android.telecom.CallScreeningService" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.android.dialer.blocking.InternationalCallRedirectionService"
+            android:exported="true"
+            android:permission="android.permission.BIND_CALL_REDIRECTION_SERVICE">
+            <intent-filter>
+                <action android:name="android.telecom.CallRedirectionService" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

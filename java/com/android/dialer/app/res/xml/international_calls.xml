@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) WitAqua
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="deny_incoming_international_calls"
+        android:title="@string/deny_incoming_international_calls_title" />
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="deny_outgoing_international_calls"
+        android:title="@string/deny_outgoing_international_calls_title" />
+</PreferenceScreen>
